@@ -1,6 +1,28 @@
 # Kilimanjaro community
 
-**A modular developer platform for building secure, production-ready enterprise applications.** This organization holds community-built extensions, examples and tools for Kilimanjaro.
+Kilimanjaro is a modular developer platform for building secure enterprise applications.
+You define AI agents, functions and data pipelines on the platform.
+The SDKs let you deploy and invoke them, read and write your data, publish to and subscribe to streams,
+sign users in, and encrypt with keys you hold.
+
+## Architecture at a glance
+
+![Architecture at a glance, steps 1 to 7: invoke calls enter at Ingress (1) and reach an extension (2) that runs in a Firelock sandbox on Bun or Wasmtime. The sandbox has no network of its own: all guest egress goes through one auditable vsock channel to the Decision Oracle (3), Warden, which evaluates each call and escalates to a human reviewer (4) when needed. Allowed calls go to the Credentials Oracle (5), which brokers all credentials with Kibo (6), so the extension never holds credentials. Calls leave through Egress (7), only to allow-listed endpoints.](https://raw.githubusercontent.com/k9o-community/.github/main/profile/extension-framework-architecture.svg)
+
+This organization holds extensions, examples and tools built by the community for Kilimanjaro.
+
+## What you can do here
+
+- **Extend the platform.** Build an AI agent, function, or data pipeline that adds a capability to Kilimanjaro, and share it so others can install it.
+- **Learn from working code.** Read examples that show how to use the SDKs, the CLI and the platform's building blocks (Keep, Pulse, Gate and Kibo) in a real application.
+- **Get your tool in front of users.** Publish a tool, a template or an integration that helps other Kilimanjaro developers.
+- **Shape what comes next.** Open an issue to ask for a change, report a problem or propose an idea.
+
+## Start here
+
+1. **Build against the platform.** Install an official SDK or the CLI from [github.com/k9o-platform](https://github.com/k9o-platform). The README of each SDK takes you from install to a first authenticated call, and shows how the platform fits together.
+2. **Read the guides** in the Developer Hub: <https://docs.kilimanjaro.dev>.
+3. **Share your work.** Open a pull request on an existing repository, or ask in an issue for a new one. See [CONTRIBUTING](https://github.com/k9o-community/.github/blob/main/CONTRIBUTING.md) for how to propose a change and what a good pull request includes.
 
 ## Links
 
@@ -8,10 +30,8 @@
 - Documentation / Developer Hub: <https://docs.kilimanjaro.dev>
 - Official SDKs and CLI: <https://github.com/k9o-platform>
 
-## Contribute
-
-Open an issue or a pull request on the repository you want to change. See [CONTRIBUTING](https://github.com/k9o-community/.github/blob/main/CONTRIBUTING.md) for the details.
-
 ## Help
 
 Questions and bugs: open an issue on the repository concerned, or email <engineering@kilimanjaro.dev>.
+
+To report a security problem, follow [SECURITY](https://github.com/k9o-community/.github/blob/main/SECURITY.md).
