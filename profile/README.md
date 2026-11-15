@@ -9,6 +9,16 @@ sign users in, and encrypt with keys you hold.
 
 ![Architecture at a glance, steps 1 to 7: invoke calls enter at Ingress (1) and reach an extension (2) that runs in a Firelock sandbox on Bun or Wasmtime. The sandbox has no network of its own: all guest egress goes through one auditable vsock channel to the Decision Oracle (3), Warden, which evaluates each call and escalates to a human reviewer (4) when needed. Allowed calls go to the Credentials Oracle (5), which brokers all credentials with Kibo (6), so the extension never holds credentials. Calls leave through Egress (7), only to allow-listed endpoints.](https://raw.githubusercontent.com/k9o-community/.github/main/profile/extension-framework-architecture.svg)
 
+An extension runs in an isolated sandbox with no network of its own, so everything it does passes through points the platform controls:
+
+1. **Ingress.** A call to an extension enters the platform here.
+2. **The extension.** Your code runs in a [Firelock](https://firelock-sandbox.github.io/) sandbox on Bun or Wasmtime. The sandbox has no network of its own. Everything the extension sends out leaves through one auditable channel.
+3. **Decision Oracle.** Warden, the Decision Oracle, evaluates every call the extension makes. External agents that submit tool calls through the platform's MCP interface meet the same checks.
+4. **Human review.** When a call needs a person's approval, the Decision Oracle escalates it to a human reviewer.
+5. **Credentials Oracle.** A call the Decision Oracle allows goes to the Credentials Oracle, which brokers every credential the call needs.
+6. **Kibo.** The Credentials Oracle works with Kibo, which holds the credentials. The extension never holds a credential.
+7. **Egress.** The call leaves the platform here, and only to endpoints on an allow-list.
+
 This organization holds extensions, examples and tools built by the community for Kilimanjaro.
 
 ## What you can do here
