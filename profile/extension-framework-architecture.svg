@@ -2,15 +2,12 @@
   <title id="hub-ext-t">Architecture at a glance</title>
   <desc id="hub-ext-d">Ingress and egress of an extension. Steps 1 to 7. Invoke calls enter at Ingress (1) and reach an extension (2) that runs in a Firelock sandbox on Bun or Wasmtime. The sandbox has no network of its own: all guest egress goes through one auditable vsock channel to the Decision Oracle (3), Warden, which evaluates each call and escalates to a human reviewer (4) when needed. External agents can also submit tool calls through the platform's MCP interface, where the Decision Oracle applies the same governance framework. Allowed calls go to the Credentials Oracle (5), which brokers all credentials with Kibo (6), so the extension never holds credentials. Calls leave through Egress (7), only to allow-listed endpoints.</desc>
   <style>
-    :root { --hs-10264a: #eef3ff; --hs-0b1b35: #ffffff; --hs-8fb0ff: #2f63d8; --hs-9db6e8: #4a5f8a;
-  --hs-ffffff: #0b1b35; --hs-b8cbf2: #51658f; --hs-dbe7ff: #dbe7ff; --hs-eaf1ff: #0b1b35;
-  --hs-1f3a6b: #c9d6f2; --hs-4f7cff: #4f7cff; --hs-7da2ff: #5a82e0; --hs-9ec0ff: #1448b8;
-  --hs-1a66ff: #1a66ff; --hs-34d399: #12a06f; --hs-ff8f8f: #d64545; --hs-onaccent: #ffffff; }
-    @media (prefers-color-scheme: dark) { :root { --hs-10264a: #10264a; --hs-0b1b35: #0b1b35; --hs-8fb0ff: #8fb0ff; --hs-9db6e8: #9db6e8;
+    :root { --hs-10264a: #10264a; --hs-0b1b35: #0b1b35; --hs-8fb0ff: #8fb0ff; --hs-9db6e8: #9db6e8;
   --hs-ffffff: #ffffff; --hs-b8cbf2: #b8cbf2; --hs-dbe7ff: #dbe7ff; --hs-eaf1ff: #eaf1ff;
   --hs-1f3a6b: #1f3a6b; --hs-4f7cff: #4f7cff; --hs-7da2ff: #7da2ff; --hs-9ec0ff: #9ec0ff;
-  --hs-1a66ff: #1a66ff; --hs-34d399: #34d399; --hs-ff8f8f: #ff8f8f; --hs-onaccent: #ffffff; } }
+  --hs-1a66ff: #1a66ff; --hs-34d399: #34d399; --hs-ff8f8f: #ff8f8f; --hs-onaccent: #ffffff; }
   </style>
+  <rect x="0" y="0" width="1200" height="576" fill="#0d1116"/>
   <defs>
     <marker id="hub-ext-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--hs-8fb0ff)"/></marker>
     <marker id="hub-ext-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--hs-34d399)"/></marker>
